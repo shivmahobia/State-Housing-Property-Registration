@@ -1,0 +1,7 @@
+{
+  "name": "CGHB-NIC",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

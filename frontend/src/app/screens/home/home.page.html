@@ -1,0 +1,46 @@
+<ion-header >
+  <ion-toolbar>
+    <img src="../../assets/img/s.png" height="35"  alt="">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+  
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-searchbar
+                placeholder="Enter Name of City"
+                [(ngModel)]="term"
+                showCancelButton="focus"
+                animated>
+  </ion-searchbar>
+
+  <ion-card *ngFor="let project of posts | customFilter: term ">
+    <ion-card-header>
+        <ion-card-title class="ion-text-center" >  
+          <ion-card-title>
+            <ion-card class="project"><ion-img class="img" src="{{project.Project_img}}" ></ion-img></ion-card>
+          </ion-card-title> 
+          <ion-label>  <h5>({{project.Project_type}})</h5>
+          </ion-label>
+          </ion-card-title>
+          <ion-card-title class="ion-text-center">  
+          <ion-label> {{project.Project_name}}, {{project.Project_address}}, {{project.Project_city}} </ion-label>
+          </ion-card-title>
+         <ion-button expand="block" (click)="Booking(project.id)" (click)="network()">Book Property</ion-button>
+      </ion-card-header>
+  </ion-card>
+
+<ion-footer>
+  <h1>&nbsp;</h1>
+</ion-footer>
+
+</ion-content>
+

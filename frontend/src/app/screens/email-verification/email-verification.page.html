@@ -1,0 +1,51 @@
+<!-- <ion-header [translucent]="true" lines="none">
+  <ion-toolbar  lines="none">
+    <ion-buttons slot="start"  lines="none">
+      <ion-back-button defaultHref="" (click)="myBackButton()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-content class="ion-padding">
+
+  <ion-button shape="circle" (click)="myBackButton()">
+    <!-- <ion-back-button defaultHref="" (click)="myBackButton()"></ion-back-button> -->
+
+    <ion-icon name="arrow-back-outline" ></ion-icon>
+  </ion-button>
+
+<br> <br><br>
+  <h1>Email Verification...</h1>
+  <h3>&nbsp;Create new Password...</h3>
+
+  <form (ngSubmit)="verify()">
+
+     <ion-input 
+    type="email" 
+    label="Email"
+    name="email" 
+    label-placement="floating" 
+    fill="outline" 
+    [(ngModel)]="email_id" 
+    errorText="Invalid email">
+   </ion-input>
+
+    <div class="otp-actions" *ngIf="!showOTP">
+      <ion-button label='Create' (click)="sendOTP()" >Send OTP</ion-button>
+    </div>
+
+    <div *ngIf="showOTP">      
+        <ion-input 
+          type="text" 
+          label="OTP"
+          name="otp" 
+          label-placement="floating" 
+          fill="outline" 
+          [(ngModel)]="otp" 
+          errorText="Invalid opt">
+        </ion-input>
+    </div>
+    <ion-button label='Verify' type="submit" *ngIf="showOTP">Verify</ion-button>
+  </form>
+</ion-content>

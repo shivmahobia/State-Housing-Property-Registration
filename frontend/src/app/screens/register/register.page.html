@@ -1,0 +1,219 @@
+<ion-content class="ion-padding">
+  <h1>Create Account,</h1>
+  <h3>Sign up to get started!</h3>
+
+  <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+
+    <ion-item class="ion-margin-vertical">
+      <ion-icon name="person-outline" slot="end" color="medium"></ion-icon>
+
+      <ion-input formControlName="username" placeholder="*Username"></ion-input>
+    </ion-item>
+    <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !registerForm.get('username')!.valid && registerForm.get('username')!.touched">
+    <p class="error">*Username is required</p>
+  </ion-text>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !registerForm.get('username')!.valid && registerForm.get('username')!.hasError('pattern')">
+    <p class="error">*Username must be Character.</p>
+  </ion-text>
+
+
+
+
+
+
+    <ion-item class="ion-margin-vertical">
+      <ion-icon name="mail-outline" slot="end" color="medium"></ion-icon>
+      <ion-input formControlName="email_id" placeholder="*Email ID"></ion-input>
+    </ion-item>
+    
+    <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!registerForm.get('email_id')!.valid && registerForm.get('email_id')!.touched">
+    <p class="error">*Email Id is required.</p>
+  </ion-text>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !registerForm.get('email_id')!.valid && registerForm.get('email_id')!.hasError('email')"    >
+  <p class="error">*Invalid Email Address.</p>
+</ion-text>
+
+
+
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon name="call-outline" slot="end" color="medium"></ion-icon>
+        <ion-input
+          formControlName="mobile_number"
+          placeholder="*Phone Number"
+        ></ion-input>
+      </ion-item>
+     
+      <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!registerForm.get('mobile_number')!.valid && registerForm.get('mobile_number')!.touched">
+    <p class="error">*Mobile Number is required</p>
+  </ion-text>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !registerForm.get('mobile_number')!.valid && registerForm.get('mobile_number')!.hasError('pattern')"    >
+  <p class="error">*Invalid Mobile Number.</p>
+</ion-text>
+<ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !registerForm.get('mobile_number')!.valid && registerForm.get('mobile_number')!.hasError('maxlength')"    >
+    <p class="error">*Mobile Number must be 10 Digit.</p>
+  </ion-text>
+
+
+      <ion-item class="ion-margin-vertical">
+      
+        <ion-input
+          formControlName="password"
+          [type]="isTypePassword ? 'password' : 'text'"
+          placeholder="*Password"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-text
+      class="ion-text-left"
+      color="danger"
+      *ngIf="!registerForm.get('password')!.valid && registerForm.get('password')!.touched">
+      <p class="error">*Password is required</p>
+    </ion-text>
+    <ion-text
+      class="ion-text-left"
+      color="danger"
+      *ngIf=" isSubmitted && !registerForm.get('password')!.valid && registerForm.get('password')!.hasError('minlength')"    >
+      <p class="error">*Password lenght must be atleat 6.</p>
+    </ion-text>
+
+
+
+
+
+
+
+
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon
+          (click)="onChange()"
+          [name]="isTypePassword ? 'lock-closed-outline' : 'lock-open-outline'"
+          slot="end"
+          [color]="isTypePassword ? 'medium' : 'primary'"
+        ></ion-icon>
+        <ion-input
+          formControlName="c_password"
+          [type]="isTypePassword ? 'password' : 'text'"
+          placeholder="*Confirm Password"
+        >
+        </ion-input>
+      </ion-item>
+
+      <!-- <ion-text
+        class="ion-text-left"
+        color="danger"
+        *ngIf="!registerForm.get('c_password')!.valid && registerForm.get('c_password')!.touched"
+      >
+        <p
+          class="error"
+          *ngIf="registerForm.get('c_password')!.invalid && registerForm.get('c_password')!.errors?.['required']"
+        >
+          *Please enter your Confirm Password
+        </p>
+        <p
+          class="error"
+          *ngIf="
+          registerForm.get('password')!.touched && 
+          registerForm.get('c_password')!.touched && 
+          registerForm.get('c_password')!.errors">
+          *Password should match
+        </p>
+        <p class="error" *ngIf="registerForm.get('c_password')!.dirty">
+          *Password must be of atleast 6 characters
+        </p>
+      </ion-text> -->
+
+
+
+      <ion-text
+      class="ion-text-left"
+      color="danger"
+      *ngIf="!registerForm.get('c_password')!.valid && registerForm.get('c_password')!.touched">
+      <p class="error">*Confirm Password is required</p>
+    </ion-text>
+    <ion-text
+      class="ion-text-left"
+      color="danger"
+      *ngIf=" isSubmitted && !registerForm.get('c_password')!.valid && registerForm.get('c_password')!.hasError('minlength')"    >
+      <p class="error">*Confirm Password lenght must be atleat 6.</p>
+    </ion-text>
+
+     
+   
+
+
+
+
+
+    <!-- <ion-input 
+    label="Username" 
+    label-placement="floating" 
+    fill="outline" 
+    formControlName="username" 
+    errorText="Invalid Username">
+  </ion-input> -->
+
+    <!-- <ion-input 
+    label="Email Id" 
+    label-placement="floating" 
+    fill="outline" 
+    formControlName="email_id" 
+    errorText="Invalid email">
+  </ion-input> -->
+
+    <!-- <ion-input 
+    label="Phone Number" 
+    label-placement="floating" 
+    fill="outline" 
+    formControlName="mobile_number" 
+    errorText="Invalid email">
+  </ion-input>
+    
+    <ion-input 
+    type="password" 
+    label="Password" 
+    label-placement="floating" 
+    fill="outline" 
+    formControlName="password"
+    errorText="Invalid password">
+  </ion-input>
+
+    <ion-input 
+    type="password" 
+    label="Confirm Password" 
+    label-placement="floating" 
+    fill="outline" 
+    formControlName="c_password"
+    errorText="Invalid Confirm password">
+  </ion-input> -->
+    
+
+
+    <ion-button type="submit" [disabled]="!registerForm.valid" (click)="network()">Register</ion-button>
+  </form>
+
+  <p class="footer-text">I'm already a member, <a routerLink="/">Sign In</a></p>
+</ion-content>

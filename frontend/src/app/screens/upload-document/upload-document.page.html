@@ -1,0 +1,165 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <img class="img" src="../../assets/img/s.png" height="35"  alt="">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="myBackButton()"></ion-back-button>
+      <!-- <ion-icon name="arrow-back-outline" size="default" (click)="myBackButton()"></ion-icon>     -->
+    </ion-buttons>
+    <!-- <ion-title>upload-document</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">upload-document</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content> -->
+
+<ion-content>
+  <br />
+  <strong class="ion-padding">Application Id :- &nbsp;{{ApplicationId}}</strong>
+  <form [formGroup]="applicationDocument" (ngSubmit)="submitData()">
+    <ion-list expand="full">
+      <ion-card>
+        <ion-item>
+          <ion-label><b>Upload Photo: *</b></ion-label>
+        </ion-item>
+        <ion-item>
+          <img class="imgg" src="../../../assets/jpg.png" />
+          <ion-input formControlName="PhotoUrl" class="file" type="file" fieldname="image"  accept=".jpg,.jpeg" (change)="getPhoto($event)" ></ion-input>
+        </ion-item>
+      </ion-card>
+
+      <ion-text
+      class="ion-text-left"
+      color="danger"
+      *ngIf=" !applicationDocument.get('PhotoUrl')!.valid && applicationDocument.get('PhotoUrl')!.touched">
+      <p class="error">*File must be Jpg or Jpeg</p>
+    </ion-text>
+
+      <ion-card>
+        <ion-item>
+          <ion-label><b>Upload Signature: *</b></ion-label>
+        </ion-item>
+        <ion-item>
+          <img class="imgg" src="../../../assets/jpg.png" />
+          <ion-input formControlName="SignatureUrl"  class="file"  type="file"  fieldname="signature" accept=".jpg,.jpeg"  (change)="getSignature($event)" ></ion-input>
+        </ion-item>
+      </ion-card>
+
+      <ion-text
+      class="ion-text-left"
+      color="danger"
+      *ngIf=" !applicationDocument.get('SignatureUrl')!.valid && applicationDocument.get('SignatureUrl')!.touched">
+      <p class="error">*File must be Jpg or Jpeg</p>
+    </ion-text>
+
+
+
+      <ion-card>
+
+        <ion-item>
+          <ion-list><ion-label><b>Identity Proof Document: *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></ion-label></ion-list>
+          <ion-select  aria-label="IdentityDocument"  placeholder="Select"  formControlName="IdentityDocument" (ionChange)="handleChangeIdentity($event)">
+            <ion-select-option *ngFor="let data of Identity_Proof_Document" [value]="data.type">{{ data.type }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="reader-outline" slot="end" color="medium"></ion-icon>
+          <ion-input formControlName="IdentityDocumentNumber" placeholder="Identity Proof Document No." ></ion-input>
+        </ion-item>
+
+
+        <ion-text class="ion-text-left" color="danger" *ngIf="!applicationDocument.get('IdentityDocumentNumber')!.valid && applicationDocument.get('IdentityDocumentNumber')!.touched" >
+          <p class="error">*Document No. is required.</p>
+        </ion-text>
+        <ion-item>
+          <img class="imgg" src="../../../assets/pdf.png" />
+          <ion-input formControlName="IdentityUrl"  class="file" type="file"  fieldname="identity" accept=".pdf"  (change)="getIdentity($event)" >
+          </ion-input>
+        </ion-item>
+
+        <ion-text
+      class="ion-text-left"
+      color="danger"
+      *ngIf=" !applicationDocument.get('IdentityUrl')!.valid && applicationDocument.get('IdentityUrl')!.touched">
+      <p class="error">*File must be pdf.</p>
+    </ion-text>
+
+
+
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <ion-list><ion-label><b>Address Proof Document: *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></ion-label></ion-list>
+          <ion-select  aria-label="AddressDocument"  placeholder="Select"  formControlName="AddressDocument"  (ionChange)="handleChangeAddress($event)"  >
+            <ion-select-option  *ngFor="let data of Address_Proof_Document"  [value]="data.type" >{{ data.type }}</ion-select-option >
+          </ion-select>
+        </ion-item>
+        <ion-item class="ion-margin-vertical">
+          <ion-icon name="reader-outline" slot="end" color="medium"></ion-icon>
+          <ion-input formControlName="AddressDocumentNumber" placeholder="Address Proof Document No."
+          ></ion-input>
+        </ion-item>
+        <ion-text class="ion-text-left" color="danger" *ngIf="!applicationDocument.get('AddressDocumentNumber')!.valid && applicationDocument.get('AddressDocumentNumber')!.touched" >
+          <p class="error">*Document No. is required.</p>
+        </ion-text>
+        <ion-item>
+          <img class="imgg" src="../../../assets/pdf.png"/>
+          <ion-input formControlName="AddressUrl" class="file"  type="file"  fieldname="address" accept=".pdf" (change)="getAddress($event)"  ></ion-input>
+        </ion-item>
+
+        <ion-text
+        class="ion-text-left"
+        color="danger"
+        *ngIf=" !applicationDocument.get('AddressUrl')!.valid && applicationDocument.get('AddressUrl')!.touched">
+        <p class="error">*File must be pdf.</p>
+      </ion-text>
+
+
+
+      </ion-card>
+
+      <ion-card>
+        <ion-item>
+          <ion-label><b>Upload Income Certificate:</b></ion-label>
+        </ion-item>
+        <ion-item>
+          <img class="imgg" src="../../../assets/pdf.png" />
+          <ion-input class="file" type="file" formControlName="IncomeUrl" fieldname="income" accept=".pdf" (change)="getIncome($event)" ></ion-input>
+        </ion-item>
+        <ion-text
+        class="ion-text-left"
+        color="danger"
+        *ngIf=" !applicationDocument.get('IncomeUrl')!.valid && applicationDocument.get('IncomeUrl')!.touched">
+        <p class="error">*File must be pdf.</p>
+      </ion-text>
+      </ion-card>
+
+      <ion-card>
+        <ion-item>
+          <ion-label><b>Upload Caste Certificate: *</b></ion-label>
+        </ion-item>
+        <ion-item>
+          <img class="imgg" src="../../../assets/pdf.png"/>
+          <ion-input class="file" type="file" formControlName="CasteUrl" fieldname="caste" accept=".pdf" (change)="getCaste($event)" ></ion-input>
+        </ion-item>
+
+        <ion-text
+        class="ion-text-left"
+        color="danger"
+        *ngIf=" !applicationDocument.get('CasteUrl')!.valid && applicationDocument.get('CasteUrl')!.touched">
+        <p class="error">*File must be pdf.</p>
+      </ion-text>
+      </ion-card>
+       <!-- <ion-button class="" shape="round" type="submit" color="cghb" [disabled]="!applicationDocument.valid" (click)="network()>Submit & Continue</ion-button> -->
+      <ion-button expand="block"  type="submit" (click)="network()" [disabled]="!applicationDocument.valid">Submit & Continue</ion-button>
+      
+    </ion-list>
+  </form>
+  <ion-footer>
+    <h1>&nbsp;</h1>
+  </ion-footer>
+</ion-content>

@@ -1,0 +1,308 @@
+// /* Center the form vertically and horizontally */
+// ion-content {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100vh; /* Set the height to 100% of the viewport height */
+//   }
+  
+//   /* Add some spacing and border to the form */
+//   form {
+//     padding: 20px;
+//     border: 1px solid #ccc;
+//     border-radius: 8px;
+//     width: 100%; /* Set the width to 100% */
+//     max-width: 400px; /* Optionally limit the maximum width of the form */
+//     box-sizing: border-box; /* Include padding and border in the width calculation */
+//   }
+  
+//   /* Style the form input fields */
+//   ion-item {
+//     margin-bottom: 20px;
+//   }
+  
+//   /* Style the "Send OTP" button */
+//   .otp-actions {
+//     display: flex;
+//     justify-content: center;
+//   }
+  
+//   /* Style the login button */
+//   ion-button[type="submit"] {
+//     margin-top: 20px;
+//   }
+  
+//   /* Media queries for responsiveness */
+//   @media screen and (min-width: 768px) {
+//     /* Adjust the form width on larger screens */
+//     form {
+//       max-width: 600px;
+//     }
+//   }
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+ion-button[shape=circle] {
+    --border-radius: 50%;
+    --background: linear-gradient(
+    90deg,
+    #7590d6 0%,
+    #4d71d7 100%
+  );
+    width: 56px;
+    height: 56px;
+}
+
+
+
+false
+
+
+h1 {
+  margin-top: 15%;
+  margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+h3 {
+  color: #939fab;
+  font-weight: 600;
+}
+
+form {
+  margin-top: 6rem;
+
+
+  ion-input{
+    margin-top: 20px;
+    // color: #939fab;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a4a4a;
+
+  }
+ 
+
+  .forgot-password-link {
+    margin-top: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    font-weight: 600;
+    font-size: 14px;
+    color: #4a4a4a;
+  }
+
+  ion-button {
+    --box-shadow: none;
+    --border-radius: 10px;
+    --background: linear-gradient(
+      90deg,
+      #7590d6 0%,
+      #4d71d7 100%
+    );
+
+    display: block;
+    margin-top: 2rem;
+    height: 48px;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-transform: initial;
+  }
+}
+
+.footer-text {
+  text-align: center;
+  font-size: 17px;
+  margin-top: 30%;
+
+  a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #4d71d7;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+::-webkit-scrollbar, *::-webkit-scrollbar {
+  display: none;
+  overflow: hidden;
+}
+
+// ion-content {
+//   overflow: hidden;
+//   --overflow: hidden;
+// }
+
+// .scroll-content {
+//   overflow: hidden;
+// }
+
+ion-list {
+  background: transparent;
+  transform: translateY(20vh);
+  ion-item {
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+  }
+  ion-row {
+    margin-bottom: 5vh;
+  }
+  ion-button {
+    width: 30vh;
+    margin: auto;
+  }
+  .alignItems {
+    ion-checkbox, ion-note {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    ion-checkbox {
+      margin-right: 1vw;
+      --size: 1.1rem;
+    }
+  }
+  .signup {
+    margin-top: 5vh;
+    font-size: 0.8rem;
+  }
+  
+  ion-col {
+    ion-note {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+
+//circle 
+
+
+.circleBase {
+  border-radius: 50%;
+}
+
+.type1 {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(90deg, #7f5fff 0%, #fa709a 100%);
+  box-shadow: 0px 1px 10px rgba(98, 140, 255, 0.5);
+  top: -50px;
+  left: -50px;
+}
+
+.type2 {
+  width: 100px;
+  height: 100px;
+  background:linear-gradient(90deg, #7f5fff 0%, #72f9c1 100%);
+}
+
+.circle1 {
+  margin-left: 180px;
+  margin-top: 40px;
+}
+
+.circle2 {
+  position: absolute;
+  top: 150px;
+  left: -20px;
+}
+
+.welcomeMessage {
+  position: absolute;
+  top: 70px;
+  left: 50px;
+  p {
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-top: 5px;
+  }
+}
+
+.error {
+  font-size: 0.75rem;
+}
+
+
+$light: #ffecd2;
+$dark: #222;
+$color1: #7f5fff;
+$color2: #fa709a;
+$color3: #ff9673;
+$color4: #fec440;
+$color5: #72f9c1;
+$color6: #5193ff;
+$color7: #fd2472;
+$color8: #5e21d6;
+$color9: #e7627d;
+$color10: #3d1635;
+
+
+
+
+

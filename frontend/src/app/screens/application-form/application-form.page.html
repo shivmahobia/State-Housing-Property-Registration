@@ -1,0 +1,626 @@
+<ion-header >
+  <ion-toolbar>
+    <img  src="../../assets/img/s.png" height="35"  alt="">
+    <ion-buttons slot="start">
+      <!-- <ion-back-button defaultHref="/home/booking"></ion-back-button> -->
+      <ion-back-button defaultHref="" (click)="myBackButton()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+
+  <ion-card-title  >
+      <h4 class="h6"><u><strong >Applicant Details</strong></u></h4>
+  </ion-card-title>  
+
+
+
+<form  [formGroup]="ApplicationForm" (ngSubmit)="SubmitData()" >
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="reader-outline" slot="end" color="medium"></ion-icon>
+    <ion-input 
+      formControlName="ApplicantId"
+      placeholder="Applicant ID"
+      value="Readonly" readonly
+    ></ion-input>
+  </ion-item>
+ 
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="person-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="Applicant_name"
+      placeholder="*Applicant Name"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('Applicant_name')!.valid && ApplicationForm.get('Applicant_name')!.touched">
+    <p class="error">*Applicant Name is required</p>
+  </ion-text>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('Applicant_name')!.valid && ApplicationForm.get('Applicant_name')!.hasError('pattern')">
+    <p class="error">*Applicant Name must be Character.</p>
+  </ion-text>
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="person-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="FatherHusband_name"
+      placeholder="*Father/Husband Name"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('FatherHusband_name')!.valid && ApplicationForm.get('FatherHusband_name')!.touched">
+    <p class="error">*Father/Husband Name is required</p>
+  </ion-text>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('FatherHusband_name')!.valid && ApplicationForm.get('FatherHusband_name')!.hasError('pattern')">
+  <p class="error">*Father/Husband Name must be Character.</p>
+</ion-text>
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="calendar-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="DateOfBirth"
+      placeholder="*Date of Birth [DD/MM/YYYY]"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('DateOfBirth')!.valid && ApplicationForm.get('DateOfBirth')!.touched">
+    <p class="error">*Date of Birth is required</p>
+  </ion-text>
+  
+  <!-- <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('DateOfBirth')!.valid && ApplicationForm.get('DateOfBirth')!.hasError('pattern')">
+  <p class="error">*Date of Birth must be Digits.</p>
+</ion-text> -->
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="calendar-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="Applicant_age"
+      placeholder="*Applicant age in (year)"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Applicant_age')!.valid && ApplicationForm.get('Applicant_age')!.touched">
+    <p class="error">*Applicant age is required</p>
+  </ion-text>
+
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('Applicant_age')!.valid && ApplicationForm.get('Applicant_age')!.hasError('pattern')"    >
+    <p class="error">*Applicant age must be Digits.</p>
+  </ion-text>
+
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('Applicant_age')!.valid && ApplicationForm.get('Applicant_age')!.hasError('maxlength')"    >
+    <p class="error">*Applicant age must be less than 100.</p>
+  </ion-text>
+
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('Applicant_age')!.valid && ApplicationForm.get('Applicant_age')!.hasError('min')"    >
+    <p class="error">*Applicant age must be Greater than 18.</p>
+  </ion-text>
+
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="call-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="Mobile_number"
+      placeholder="*Mobile Number"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Mobile_number')!.valid && ApplicationForm.get('Mobile_number')!.touched">
+    <p class="error">*Mobile Number is required</p>
+  </ion-text>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('Mobile_number')!.valid && ApplicationForm.get('Mobile_number')!.hasError('pattern')"    >
+  <p class="error">*Invalid Mobile Number.</p>
+</ion-text>
+<ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('Mobile_number')!.valid && ApplicationForm.get('Mobile_number')!.hasError('maxlength')"    >
+    <p class="error">*Mobile Number must be 10 Digit.</p>
+  </ion-text>
+
+
+
+
+
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="mail-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="Email_id"
+      placeholder="*Email Id"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Email_id')!.valid && ApplicationForm.get('Email_id')!.touched">
+    <p class="error">*Email Id is required.</p>
+  </ion-text>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('Email_id')!.valid && ApplicationForm.get('Email_id')!.hasError('email')"    >
+  <p class="error">*Invalid Email Address.</p>
+</ion-text>
+
+
+
+
+
+
+
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="call-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="ContactHome_number"
+      placeholder="Contact Number (Home)"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('ContactHome_number')!.valid && ApplicationForm.get('ContactHome_number')!.hasError('pattern')"    >
+  <p class="error">*Invalid Mobile Number.</p>
+</ion-text>
+<ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('ContactHome_number')!.valid && ApplicationForm.get('ContactHome_number')!.hasError('maxlength')"    >
+    <p class="error">*Mobile Number must be 10 Digit.</p>
+  </ion-text>
+
+
+
+
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="call-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="ContactOffice_number"
+      placeholder="Contact Number (office)"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('ContactOffice_number')!.valid && ApplicationForm.get('ContactOffice_number')!.hasError('pattern')"    >
+  <p class="error">*Invalid Mobile Number.</p>
+</ion-text>
+<ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('ContactOffice_number')!.valid && ApplicationForm.get('ContactOffice_number')!.hasError('maxlength')"    >
+    <p class="error">*Mobile Number must be 10 Digit.</p>
+  </ion-text>
+
+
+
+
+
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="location-outline" slot="end" color="medium"></ion-icon>        <ion-input
+      formControlName="Correspondence_address"
+      placeholder="*Correspondence Address"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Correspondence_address')!.valid && ApplicationForm.get('Correspondence_address')!.touched">
+    <p class="error">*Correspondence Address required</p>
+  </ion-text>
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="location-outline" slot="end" color="medium"></ion-icon>        <ion-input
+      formControlName="Permanent_address"
+      placeholder="*Permanent Address"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Permanent_address')!.valid && ApplicationForm.get('Permanent_address')!.touched">
+    <p class="error">*Permanent Address required</p>
+  </ion-text>
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="briefcase-outline" slot="end" color="medium"></ion-icon>
+    <ion-select
+    aria-label="Identity Proof Document"
+    placeholder="*Profession"
+    formControlName="Profession"
+    (ionChange)="handleChangeProfession($event)">
+    <ion-select-option *ngFor="let data of ProfessionDropdown" [value]="data.type">{{ data.type }}</ion-select-option>
+  </ion-select>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Profession')!.valid && ApplicationForm.get('Profession')!.touched">
+    <p class="error">*Profession is required</p>
+  </ion-text>
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="wallet-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="AnnualIncomeSelf"
+      placeholder="*Annual Income (self)"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('AnnualIncomeSelf')!.valid && ApplicationForm.get('AnnualIncomeSelf')!.touched">
+    <p class="error">*Annual Income (self) is required</p>
+  </ion-text>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('AnnualIncomeSelf')!.valid && ApplicationForm.get('AnnualIncomeSelf')!.hasError('pattern')"    >
+  <p class="error">*Annual Income must be Digits.</p>
+</ion-text>
+
+
+
+
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="wallet-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="AnnualIncomeFamily"
+      placeholder="*Annual Income (family)"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('AnnualIncomeFamily')!.valid && ApplicationForm.get('AnnualIncomeFamily')!.touched">
+    <p class="error">*Annual Income (family) is required</p>
+  </ion-text>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('AnnualIncomeFamily')!.valid && ApplicationForm.get('AnnualIncomeFamily')!.hasError('pattern')"    >
+  <p class="error">*Annual Income must be Digits.</p>
+</ion-text>
+
+
+
+
+
+
+
+
+
+
+  <ion-card-title  >
+    <h4 class="h6"><u><strong >Bank Details</strong></u></h4>
+</ion-card-title> 
+  
+
+  <ion-item class="ion-margin-vertical">
+    <ion-select
+    aria-label="Identity Proof Document"
+    placeholder="*Bank"
+    formControlName="BankName"
+    (ionChange)="handleChangeBank($event)">
+    <ion-select-option *ngFor="let data of BankNameDropdown" [value]="data.type">{{ data.type }}</ion-select-option>
+  </ion-select>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('BankName')!.valid && ApplicationForm.get('BankName')!.touched">
+    <p class="error">*Bank Name is required</p>
+  </ion-text>
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-input
+      formControlName="AccountNumber"
+      placeholder="*Account Number"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('AccountNumber')!.valid && ApplicationForm.get('AccountNumber')!.touched">
+    <p class="error">*Bank Account Number is required</p>
+  </ion-text>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('AccountNumber')!.valid && ApplicationForm.get('AccountNumber')!.hasError('pattern')"    >
+  <p class="error">*Account Number must be Digits.</p>
+</ion-text>
+<ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('AccountNumber')!.valid && ApplicationForm.get('AccountNumber')!.hasError('maxlength')"    >
+    <p class="error">*Account Number must be 12 Digits.</p>
+  </ion-text>
+
+
+
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-input
+      formControlName="BranchName"
+      placeholder="*Branch Name"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('BranchName')!.valid && ApplicationForm.get('BranchName')!.touched">
+    <p class="error">*Branch Name is required</p>
+  </ion-text>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('BranchName')!.valid && ApplicationForm.get('BranchName')!.hasError('pattern')">
+  <p class="error">*Branch Name must be Character.</p>
+</ion-text>
+
+
+
+
+
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-input
+      formControlName="IfscCode"
+      placeholder="IFSC Code"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('IfscCode')!.valid && ApplicationForm.get('IfscCode')!.touched">
+    <p class="error">*IFSC code is required</p>
+  </ion-text>
+
+
+
+
+  <!-- <ion-item class="ion-margin-vertical">
+    <ion-input
+      formControlName="GST_number"
+      placeholder="GST No. (if available)"
+    ></ion-input>
+  </ion-item> -->
+ 
+
+  <ion-item class="ion-margin-vertical">
+ 
+    <ion-select
+    aria-label="Category"
+    placeholder="*Category"
+    formControlName="Category"
+    (ionChange)="handleChangeCategory($event)">
+    <ion-select-option *ngFor="let data of CategoryDropdown" [value]="data.type">{{ data.type }}</ion-select-option>
+  </ion-select>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Category')!.valid && ApplicationForm.get('Category')!.touched">
+    <p class="error">*Category is required</p>
+  </ion-text>
+
+
+  <ion-card-title  >
+    <h4 class="h6"><u><strong >Nominee Details</strong></u></h4>
+</ion-card-title> 
+
+  
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="person-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="Nominee_name"
+      placeholder="*Nominee_name"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Nominee_name')!.valid && ApplicationForm.get('Nominee_name')!.touched">
+    <p class="error">*Nominee Name is required</p>
+  </ion-text>
+<ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('Nominee_name')!.valid && ApplicationForm.get('Nominee_name')!.hasError('pattern')">
+  <p class="error">*Nominee Name must be Character.</p>
+</ion-text>
+
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="calendar-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="Nominee_age"
+      placeholder="*Nominee_age"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Nominee_age')!.valid && ApplicationForm.get('Nominee_age')!.touched">
+    <p class="error">*Nominee age is required</p>
+  </ion-text>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('Nominee_age')!.valid && ApplicationForm.get('Nominee_age')!.hasError('pattern')"    >
+    <p class="error">*Nominee age must be Digits.</p>
+  </ion-text>
+
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('Nominee_age')!.valid && ApplicationForm.get('Nominee_age')!.hasError('maxlength')"    >
+    <p class="error">*Nominee age must be less than 100.</p>
+  </ion-text>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('Nominee_age')!.valid && ApplicationForm.get('Nominee_age')!.hasError('min')"    >
+    <p class="error">*Nominee age must be Greater than 18.</p>
+  </ion-text>
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="call-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="Nominee_number"
+      placeholder="*Nominee Mobile Number"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Nominee_number')!.valid && ApplicationForm.get('Nominee_number')!.touched">
+    <p class="error">*Mobile Number is required</p>
+  </ion-text>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('Nominee_number')!.valid && ApplicationForm.get('Nominee_number')!.hasError('pattern')"    >
+  <p class="error">*Invalid Mobile Number.</p>
+</ion-text>
+<ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf=" isSubmitted && !ApplicationForm.get('Nominee_number')!.valid && ApplicationForm.get('Nominee_number')!.hasError('maxlength')"    >
+    <p class="error">*Mobile Number must be 10 Digit.</p>
+  </ion-text>
+
+
+
+
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="people-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="Nominee_relation"
+      placeholder="*Relation with Applicant"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Nominee_relation')!.valid && ApplicationForm.get('Nominee_relation')!.touched">
+    <p class="error">*Please Enter Relation with Applicant</p>
+  </ion-text>
+  <ion-text
+  class="ion-text-left"
+  color="danger"
+  *ngIf=" isSubmitted && !ApplicationForm.get('Nominee_relation')!.valid && ApplicationForm.get('Nominee_relation')!.hasError('pattern')">
+  <p class="error">*Nominee Relation must be in Character.</p>
+</ion-text>
+
+
+
+  <ion-item class="ion-margin-vertical">
+    <ion-icon name="location-outline" slot="end" color="medium"></ion-icon>
+    <ion-input
+      formControlName="Nominee_address"
+      placeholder="*Nominee address"
+    ></ion-input>
+  </ion-item>
+  <ion-text
+    class="ion-text-left"
+    color="danger"
+    *ngIf="!ApplicationForm.get('Nominee_address')!.valid && ApplicationForm.get('Nominee_address')!.touched">
+    <p class="error">*Nominee address is required</p>
+  </ion-text>
+  
+
+<ion-button expand="block" label='application'  type="submit"  (click)="network()" [disabled]="!ApplicationForm.valid">Submit & Continue</ion-button>
+
+
+</form>
+<ion-footer>
+  <h1>&nbsp;</h1>
+</ion-footer>
+
+</ion-content>

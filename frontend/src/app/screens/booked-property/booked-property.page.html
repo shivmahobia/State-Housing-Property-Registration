@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Booked-property</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Booked-property</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- <ion-card >  
+    <ion-card-header> 
+      <ion-card-title >
+          <h4 class="h6">Project:-&nbsp;&nbsp;{{data?.Project_Data }}</h4>
+          <h4 class="h6">Property:-&nbsp;{{data?.Property_Data }}</h4>
+          <h4 class="h6">Quarter:-&nbsp;{{data?.Quarter_Data          }}</h4>
+          <h4 class="h6">Quarter Price:-&nbsp;{{data?.Quarter_Price          }}</h4>
+      </ion-card-title>  
+      </ion-card-header>  
+  </ion-card> -->
+
+
+
+
+
+  <ion-card *ngIf="isCardVisible" >   
+
+
+    <ion-card-header> 
+       <h4 class="tabel" style="color: brown;"> <b>State Housing Property Registration</b>  </h4>
+       <h5 class="a" style="color:black">[shpr@nic.in],[07744-222-222]</h5>
+       <h4 class="b">Booked Property Invoice</h4>
+       <h3>Application Number : {{data?.ApplicantId}}</h3> 
+       <h3>Applicant Name : {{data?.Applicant_name}}</h3>
+       <h3>Father/Husband Name : {{data?.FatherHusband_name}}</h3>
+       <h3>Address : {{data?.Permanent_address}}</h3>
+       <h3>Phone Number : {{data?.Mobile_number}}</h3>
+       <h3>Email Id : {{data?.Email_id}}</h3>
+       <!-- <h3>Date:- {{datee[2]}}/{{datee[1]}}/{{datee[0]}}</h3> -->
+
+
+       <!-- <h4 class="h6">Project:-&nbsp;&nbsp;{{data?.Project_Data }}</h4>
+       <h4 class="h6">Property:-&nbsp;{{data?.Property_Data }}</h4>
+       <h4 class="h6">Quarter:-&nbsp;{{data?.Quarter_Data          }}</h4>
+       <h4 class="h6">Quarter Price:-&nbsp;{{data?.Quarter_Price          }}</h4> -->
+
+
+       <ion-row >
+          <ion-col class="header-row" >
+            <ion-text>
+              <b>Project Name</b>   
+            </ion-text>
+          </ion-col>
+            <ion-col>
+              <ion-text> <h3>{{data?.Project_Data }}</h3></ion-text>
+            </ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col class="header-row" >
+            <ion-text>
+              <b>Property Name</b>   
+            </ion-text>
+          </ion-col>
+            <ion-col>
+              <ion-text><h3>{{data?.Property_Data }}</h3></ion-text>
+            </ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col class="header-row" >
+            <ion-text>
+             <b>Quarter</b>   
+            </ion-text>
+          </ion-col>
+            <ion-col>
+              <ion-text><h3>{{data?.Quarter_Data}}</h3></ion-text>
+            </ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col class="header-row" >
+            <ion-text>
+            <b>Amount Paid:</b>   
+            </ion-text>
+          </ion-col>
+    
+            <ion-col>
+              <ion-text>
+               <h3> {{data?.Quarter_Price}}</h3>
+              </ion-text>
+            </ion-col>
+      
+        </ion-row>
+      </ion-card-header>    
+  </ion-card>
+
+
+
+
+
+
+</ion-content>

@@ -1,0 +1,113 @@
+<ion-header >
+  <ion-toolbar>
+    <img  src="../../assets/img/s.png" height="35"  alt="">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="" (click)="myBackButton()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>  
+
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-card >  
+    <ion-card-header> 
+      <ion-card-title *ngIf="data" >
+          <h4 class="h6">Project:-&nbsp;&nbsp;{{data.Project_name}}</h4>
+          <h4 class="h6">Address:-&nbsp;{{data.Project_address}},{{data.Project_city}}</h4>
+          <!-- <h4  class="h6"><ion-icon name="location-outline"></ion-icon>{{data.Project_city}}</h4> -->
+      </ion-card-title>  
+      </ion-card-header>  
+
+      <ion-card class="topcard">
+    <ion-card-content *ngIf="data" class="text">  
+       <p>LAST DATE TO FILL APPLICATION (<i style='color:red !important;'>15 Day Cycle</i>):- {{data.Project_date}} - Till 12 MidNight 
+        (If the Property remains vacant after the allotment, the application process will be started again.)</p> 
+    </ion-card-content>  
+  </ion-card>
+  </ion-card>
+
+
+  <ion-card > 
+     
+    <ion-card-header> 
+      <ion-card-title >
+        <ion-card class="project"><h4 class="h6"> <ion-icon name="information-outline" ></ion-icon>Property Details</h4></ion-card>
+      </ion-card-title>  
+      </ion-card-header> 
+
+    <ion-card-content > 
+
+      <ion-row  >
+        <!-- <ion-col size="2"><b>S.No</b></ion-col> -->
+        <ion-col  size="6"><b>Property Type</b></ion-col>
+        <ion-col  size="6"><b>No. of Property Available</b></ion-col>
+      </ion-row>
+      <ion-row *ngFor="let data of property_Data" >
+        <!-- <ion-col size="2"><b>{{data['P_id']}}</b></ion-col> -->
+        <ion-col class="shiv" size="6"><b>{{data['Property_type']}}</b></ion-col>
+        <ion-col class="shiv"  class="shiv"size="6"><b>{{data['Property_available']}}</b></ion-col>
+      </ion-row>
+      <br>
+      <ion-row  >
+        <ion-col  size="6"><b>Property Type</b></ion-col>
+        <ion-col  size="6"><b>Select Quarters</b></ion-col>
+      </ion-row>
+      
+  <ion-list >
+    <ion-row class="table">
+    <ion-col  size="6">
+      <ion-list>
+        <ion-item>
+          <ion-select placeholder="Select Property" (ionChange)="onPropertyType($event)" >
+            <ion-select-option *ngFor="let data of property_Data" [value]="data['P_id']">{{data['Property_type']}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+
+    <ion-col  size="6" > 
+      <ion-list>
+        <ion-item>
+          <ion-select placeholder="Select Quarter" (ionChange)="Quarter_id($event)" fill="solid">
+            <ion-select-option *ngFor="let dd of filterQuarter_Data" [value]="dd['Q_id']">{{dd.Quarters}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+
+  </ion-row>
+  </ion-list>
+  <ion-button expand="block" (click)="next()" (click)="network()">Book</ion-button>
+  </ion-card-content>  
+  </ion-card>
+
+  <ion-card >  
+    <ion-card-header> 
+      <ion-card-title  >
+        <ion-card class="project"><h4 class="h6"> <ion-icon name="information-circle-outline" ></ion-icon>Desciption</h4></ion-card>
+      </ion-card-title>  
+      </ion-card-header>  
+    <ion-card-content class="text">  
+      <p class="desciption"> Living up to its commitment for facilitating houses for economically weaker and 
+        backward sections, Chhattisgarh Housing Board has also been effortful in addressing 
+        the housing needs of all other sections of society. In the same direction, CGHB has 
+        initiated various schemes, under which houses of different sizes, types, shapes and 
+        costs, equipped with modern amenities have been constructed to cater the demands and 
+        requirements of different sections of society.</p>
+    </ion-card-content>  
+  </ion-card>
+
+
+
+
+  <ion-footer>
+    <h1>&nbsp;</h1>
+  </ion-footer>
+
+</ion-content>

@@ -1,0 +1,116 @@
+<ion-content class="ion-padding" [fullscreen]="true">
+  <h1>Welcome,</h1>
+  <h3>Sign in to continue!</h3>
+
+  <!-- <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    
+    
+    <ion-input 
+    label="Email ID" 
+    label-placement="floating" 
+    fill="outline" 
+    formControlName="email_id" 
+    errorText="Invalid email">
+  </ion-input>
+
+    
+   
+
+    <ion-input 
+    type="password" 
+    label="Password" 
+    label-placement="floating" 
+    fill="outline" 
+    formControlName="password"
+    [type]="isTypePassword ? 'password' : 'text'"
+    errorText="Invalid password">
+  </ion-input>
+    <ion-icon
+    (click)="onChange()"
+    [name]="isTypePassword ? 'lock-closed-outline' : 'lock-open-outline'"
+    slot="end"
+    [color]="isTypePassword ? 'medium' : 'primary'">
+  </ion-icon>
+
+
+    <a routerLink="/email-verification" class="forgot-password-link">Forgot Password?</a>
+    <ion-button label='Login'  type="submit" [disabled]="!form.valid" (click)="network()">Login</ion-button>
+  </form> -->
+
+
+
+  <form name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- <ion-list lines="none" class="ion-margin ion-padding ion-text-center"> -->
+      <ion-item class="ion-margin-vertical">
+        <ion-icon name="mail-outline" slot="end" color="medium"></ion-icon>
+        <ion-input
+          formControlName="email_id"
+          placeholder="Email ID"
+        ></ion-input>
+      </ion-item>
+
+      <ion-text
+        class="ion-text-left"
+        color="danger"
+        *ngIf="!form.get('email_id')!.valid && form.get('email_id')!.touched">
+        <p class="error">*Please Enter Email Id.</p>
+      </ion-text>
+      <ion-text
+      class="ion-text-left"
+      color="danger"
+      *ngIf=" !form.get('email_id')!.valid && form.get('email_id')!.hasError('email')"    >
+      <p class="error">*Invalid Email Address.</p>
+    </ion-text>
+
+
+
+
+      <ion-item class="ion-margin-vertical">
+        <ion-icon
+          (click)="onChange()"
+          [name]="isTypePassword ? 'lock-closed-outline' : 'lock-open-outline'"
+          slot="end"
+          [color]="isTypePassword ? 'medium' : 'primary'"
+        ></ion-icon>
+        <ion-input
+          formControlName="password"
+          [type]="isTypePassword ? 'password' : 'text'"
+          placeholder="Password"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-text
+        class="ion-text-left"
+        color="danger"
+        *ngIf="!form.get('password')!.valid && form.get('password')!.touched"
+      >
+        <p
+          class="error"
+          *ngIf="form.get('password')!.invalid && form.get('password')!.errors?.['required']"
+        >
+          *Please Enter Password.
+        </p>
+        <p class="error" *ngIf="form.get('password')!.dirty">
+          *Password Must Be 6 characters.
+        </p>
+      </ion-text>
+
+      
+
+    
+      <a routerLink="/email-verification" class="forgot-password-link">Forgot Password?</a>
+
+      <ion-button label='Login'  type="submit" [disabled]="!form.valid" (click)="network()">Login</ion-button>
+
+
+    <!-- </ion-list> -->
+  </form>
+
+
+ <p class="footer-text">I'm a new user, <a routerLink="/register">Sign Up</a></p>
+
+
+
+</ion-content>

@@ -1,0 +1,9 @@
+<ion-datetime-button datetime="datetime">
+</ion-datetime-button>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime  presentation="date" id="datetime"  (ionChange)="onDateChange($event)" ></ion-datetime>
+  </ng-template>
+</ion-modal>
+

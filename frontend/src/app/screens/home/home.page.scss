@@ -1,0 +1,70 @@
+ion-menu-button {
+    color: var(--ion-color-primary);
+  }
+  
+
+  img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   
+  }
+
+
+  ion-card {
+    border-radius: 10px;
+    border: 1px solid var(--ion-color-primary);;
+    width: auto;
+    height: auto;
+}
+
+
+ion-label {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+ion-button{
+    margin-top: 12px;
+}
+
+ .project{
+    padding: 0px;
+    margin-top: 2px;
+    height: auto;
+    width: auto;
+  }
+
+  ion-toast.custom-toast {
+    --background: #f4f4fa;
+    --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+    --color: #4b4a50;
+  }
+  
+  ion-toast.custom-toast::part(message) {
+    font-style: italic;
+  }
+  
+  ion-toast.custom-toast::part(button) {
+    border-left: 1px solid #d2d2d2;
+    color: #030207;
+    font-size: 15px;
+  }
+
+  ion-button {
+    --box-shadow: none;
+    --border-radius: 10px;
+    --background: linear-gradient(
+      90deg,
+      #7590d6 0%,
+      #4d71d7 100%
+    );
+
+    display: block;
+    height: 48px;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-transform: initial;
+  }
+

@@ -1,0 +1,19 @@
+﻿{
+    "dbName": "Database Name",
+    "dbConfig": {
+        "server": "localhost",
+        "options": {
+            "port": 1433,
+            "trustServerCertificate": true
+        },
+        "authentication": {
+            "type": "default",
+            "options": {
+                "userName": "shiv", 
+                "password": "shiv" 
+            }
+        }
+    },
+    "secret": "THIS IS  SHIV KUMAR MAHOBIA"
+}
+
